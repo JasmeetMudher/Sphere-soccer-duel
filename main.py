@@ -9,7 +9,7 @@ PADDLE_WIDTH = 1
 BALL_RADIUS = 2
 PADDLE_CHAR = '|'
 MAX_SCORE = 5
-INITIAL_DELAY = 0.05  # Initial speed delay for the ball
+INITIAL_DELAY = 0.05
 
 # CPU behavior constants
 CPU_ERROR_INTERVAL = 20  # seconds before CPU starts to occasionally miss the ball
