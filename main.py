@@ -26,3 +26,42 @@ def main_game(stdscr):
     ball_dx, ball_dy = 1, 1
     score1, score2 = 0, 0
     speed_delay = INITIAL_DELAY
+def instructions_screen(stdscr, message, timeout=5):
+    stdscr.clear()
+    height, width = stdscr.getmaxyx()
+    for idx, line in enumerate(message):
+        stdscr.addstr(height // 2 - len(message) // 2 + idx, width // 2 - len(line) // 2, line)
+    stdscr.refresh()
+    time.sleep(timeout)
+
+def show_instructions(stdscr):
+    title_message = ["PaddleSphere Showdown"]
+    instructions_screen(stdscr, title_message, timeout=3)
+
+    aim_message = [
+        "Welcome to 3D Sphere Soccer!",
+        "Goal: Score by hitting the ball past your opponent's paddle.",
+        "The first player to reach 5 points wins!"
+    ]
+    instructions_screen(stdscr, aim_message, timeout=4)
+
+    controls_message = [
+        "Controls:",
+        "- Player 1: Use 'W' to move up and 'S' to move down",
+        "- Player 2: Use 'Arrow Up' and 'Arrow Down' to move",
+    ]
+    instructions_screen(stdscr, controls_message, timeout=4)
+
+def choose_mode(stdscr):
+    choice_message = [
+        "Choose Game Mode:",
+        "1 - Play against AI",
+        "2 - Play against another player"
+    ]
+    instructions_screen(stdscr, choice_message, timeout=0)
+    while True:
+        choice = stdscr.getch()
+        if choice == ord('1'):
+            return 'AI'
+        elif choice == ord('2'):
+          return'Human'
