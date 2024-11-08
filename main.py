@@ -1,6 +1,7 @@
 import curses
 import time
 import math
+import random
 
 # Constants
 PADDLE_HEIGHT = 5
@@ -103,3 +104,35 @@ def move_ball(ball_x, ball_y, ball_dx, ball_dy, height, width):
     if ball_y - BALL_RADIUS <= 0 or ball_y + BALL_RADIUS >= height:
         ball_dy *= -1
     return ball_x, ball_y, ball_dx, ball_dy
+
+
+def update_ai_paddle(paddle_y, ball_y, height):
+    if abs(ball_y - paddle_y) > random.randint(1, 3):
+        if paddle_y < ball_y and paddle_y + PADDLE_HEIGHT < height:
+            paddle_y += 1
+        elif paddle_y > ball_y and paddle_y > 0:
+            paddle_y -= 1
+    return paddle_y
+
+def check_collision(paddle_x, paddle_y, ball_x, ball_y, ball_dx, speed_delay):
+    if paddle_x == ball_x and paddle_y <= ball_y <= paddle_y + PADDLE_HEIGHT:
+        ball_dx *= -1
+        speed_delay *= SPEED_INCREASE_FACTOR
+    return ball_dx, speed_delay
+
+def update_score(ball_x, width, score1, score2):
+    if ball_x - BALL_RADIUS < 0:
+        score2 += 1
+        return width // 2, score2, score1
+    elif ball_x + BALL_RADIUS >= width:
+        score1 += 1
+        return width // 2, score1, score2
+    return ball_x, score1, score2
+
+def handle_pause(stdscr, key):
+    if key == 27:  # ESC key
+        stdscr.addstr(0, 0, "Game Paused. Press any key to continue...")
+        stdscr.refresh()
+        stdscr.nodelay(0)
+        stdscr.getch()
+        stdscr.nodelay(1)
