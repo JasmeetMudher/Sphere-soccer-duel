@@ -20,9 +20,9 @@
 
 ### Installing `curses`
 The `curses` library is included by default in Python on Linux and macOS. For Windows, you may need to install the `windows-curses` package to enable `curses` support:
-
-```bash
+      ```bash
 pip install windows-curses
+
 ## Installation
 To run **Sphere Soccer Duel**, ensure you have Python 3.x and the `curses` library installed.
 
