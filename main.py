@@ -81,3 +81,25 @@ def draw_sphere(stdscr, x, y, radius):
 def draw_score(stdscr, score1, score2, width):
     score_display = f"{score1} - {score2}"
     stdscr.addstr(1, width // 2 - len(score_display) // 2, score_display)
+
+    def handle_player_controls(stdscr, key, paddle1_y, paddle2_y, height):
+   
+    if key == ord('w') and paddle1_y > 0:
+        paddle1_y -= 1
+    if key == ord('s') and paddle1_y + PADDLE_HEIGHT < height:
+        paddle1_y += 1
+
+  
+    if key == curses.KEY_UP and paddle2_y > 0:
+        paddle2_y -= 1
+    if key == curses.KEY_DOWN and paddle2_y + PADDLE_HEIGHT < height:
+        paddle2_y += 1
+    return paddle1_y, paddle2_y
+
+def move_ball(ball_x, ball_y, ball_dx, ball_dy, height, width):
+    ball_x += ball_dx
+    ball_y += ball_dy
+
+    if ball_y - BALL_RADIUS <= 0 or ball_y + BALL_RADIUS >= height:
+        ball_dy *= -1
+    return ball_x, ball_y, ball_dx, ball_dy
