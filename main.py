@@ -65,3 +65,19 @@ def choose_mode(stdscr):
             return 'AI'
         elif choice == ord('2'):
           return'Human'
+        
+def draw_paddle(stdscr, x, y):
+    for i in range(PADDLE_HEIGHT):
+        stdscr.addch(y + i, x, PADDLE_CHAR)
+
+def draw_sphere(stdscr, x, y, radius):
+    for angle in range(0, 360, 10):
+        radians = math.radians(angle)
+        sphere_x = int(radius * math.cos(radians)) + x
+        sphere_y = int(radius * math.sin(radians) / 2) + y
+        if 0 <= sphere_x < curses.COLS and 0 <= sphere_y < curses.LINES:
+            stdscr.addch(sphere_y, sphere_x, 'o')
+
+def draw_score(stdscr, score1, score2, width):
+    score_display = f"{score1} - {score2}"
+    stdscr.addstr(1, width // 2 - len(score_display) // 2, score_display)
