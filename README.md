@@ -14,23 +14,41 @@
 - **Player 2**: Use the `Arrow Up` and `Arrow Down` keys to move up and down.
 - **Pause**: Press `ESC` to pause the game. Press any key to resume.
 
-## Requirements
-- Python 3.x
-- `curses` library (required for terminal graphics)
+## Installation Guide
 
-### Installing `curses`
-The `curses` library is included by default in Python on Linux and macOS. For Windows, you may need to install the `windows-curses` package to enable `curses` support:
-      ```bash
-pip install windows-curses
+To run **Sphere Soccer Duel**, follow the instructions below to clone the project, install dependencies, and start the game.
 
-## Installation
-To run **Sphere Soccer Duel**, ensure you have Python 3.x and the `curses` library installed.
+### Prerequisites
 
-1. Clone the repository or download the game files.
-2. Open a terminal and navigate to the folder containing `main.py`.
-3. Run the game with the following command:
-   ```bash
-   python3 main.py
+Ensure you have the following installed:
+
+- **Git**: To clone the repository.
+
+### Installation Steps
+
+ **1. Clone the Repository**
+
+Clone the project repository from GitHub using the following command:
+
+```bash
+git clone https://github.com/JasmeetMudher/Sphere-soccer-duel/
+```
+
+**2. Install Required Dependencies**
+
+The project includes a requirements.sh file that automates the installation of required dependencies. Run the following command to install the necessary libraries:
+
+```bash
+bash requirements.sh
+```
+
+**3. Run the Game**
+
+After the dependencies are installed, you can start the game by running:
+
+```bash
+python3 main.py
+```
 
 ## How to Play
 1. Upon starting the game, choose a game mode:
